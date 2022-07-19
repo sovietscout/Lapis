@@ -1,10 +1,10 @@
 package dotmatrix
 
 import (
+	"fmt"
 	"image"
 	"image/color"
 	"math/rand"
-	"strconv"
 
 	"git.sr.ht/~sbinet/gg"
 	"github.com/sovietscout/lapis/cmd/lapis"
@@ -49,7 +49,7 @@ func (g *DotMatrix) Generate() image.Image {
 }
 
 func (g *DotMatrix) GetFileName() string {
-	return g.Name + "-" + strconv.FormatInt(g.Seed, 10) + ".png"
+	return fmt.Sprintf("%s-%d.png", g.Name, g.Seed)
 }
 
 func (g *DotMatrix) genDot(i int64) image.Image {
