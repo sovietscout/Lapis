@@ -13,8 +13,6 @@ import (
 var (
 	minDotSize = 0
 	maxDotSize = 4
-
-	seeder     = int64(0)
 )
 
 type DotMatrix lapis.Generator
@@ -39,10 +37,8 @@ func (g *DotMatrix) Generate() image.Image {
 	// Draw dots
 	for i := 0; i <= 1000; i += 100 {
 		for j := 0; j <= 1000; j += 100 {
-			g.Image.DrawImage(g.genDot(seeder), i, j)
-			seeder++
+			g.Image.DrawImage(g.genDot(), i, j)
 		}
-		seeder++
 	}
 
 	return g.Image.Image()
@@ -52,9 +48,7 @@ func (g *DotMatrix) GetFileName() string {
 	return fmt.Sprintf("%s-%d.png", g.Name, g.Seed)
 }
 
-func (g *DotMatrix) genDot(i int64) image.Image {
-	rand.Seed(g.Seed + i)
-
+func (g *DotMatrix) genDot() image.Image {
 	// https://stackoverflow.com/a/54536595 (Generate rand num b/w range)
 	radius := minDotSize + rand.Intn(maxDotSize - minDotSize + 1)
 
