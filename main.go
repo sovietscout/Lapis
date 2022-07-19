@@ -10,6 +10,7 @@ import (
 
 	"github.com/sovietscout/lapis/cmd/lapis"
 	"github.com/sovietscout/lapis/pkg/generators/dotmatrix"
+	"github.com/sovietscout/lapis/pkg/generators/radeowheel"
 )
 
 func main() {
@@ -29,6 +30,8 @@ func main() {
 	switch strings.ToLower(*genFlag) {
 	case "dotmatrix":
 		generator = dotmatrix.NewDotMatrix(*seedFlag)
+	case "radeowheel":
+		generator = radeowheel.NewRadeoWheel(*seedFlag)
 	default:
 		log.Fatalf("Unknown generator \"%s\"", *genFlag)
 	}
