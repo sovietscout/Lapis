@@ -11,7 +11,7 @@ import (
 )
 
 var (
-	radius = 3.5
+	radius = 4.0
 	numOfDots = 4
 
 	rings = 24
@@ -54,8 +54,8 @@ func (g *RadeoWheel) Generate() image.Image {
 		for j := 0; j < numOfDots; j++ {
 			rads := gg.Radians((360.0 / float64(numOfDots)) * float64(j))
 
-			x := (math.Cos(rads) * radius * float64(i) * 5) + (1000 / 2)
-			y := (math.Sin(rads) * radius * float64(i) * 5) + (1000 / 2)
+			x := (math.Cos(rads) * radius * float64(i) * 4.5) + (1000 / 2)
+			y := (math.Sin(rads) * radius * float64(i) * 4.5) + (1000 / 2)
 
 			g.Image.SetHexColor(getRandomColour(i))
 			g.Image.DrawCircle(x, y, radius)
